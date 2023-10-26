@@ -88,8 +88,9 @@ def add():
 		title = None
 
 	# Create a new contact object and save it to the file.
-	save_contact(Contact(name, number, title))
-	time.sleep(0.5)
+	contact = Contact(name, number, title)
+	save_contact(contact)
+
 	print(f"\nThe contact {name} was added successfully.")
 
 
@@ -108,13 +109,13 @@ def search_contact(query, search_by="name"):
 def choice():
 	# Ask the user to search, add, edit, or quit
 	choice = input("Do you want to...\n(search/add/edit/quit): ")
-	choice = choice.lower()
+	choice = choice.lower() # lower the input word for the program to read it
 
 	# Validate the user's input.
 	while choice not in ("search", "add", "edit", "quit"):
 		print("Invalid input. Please enter 'search', 'add', 'edit', or 'quit'.")
 		choice = input("Do you want to search for a contact, add a new contact, edit a contact info, or quit?\n: ")
-		choice = choice.lower()
+		choice = choice.lower() # lower the input word for the program to read it
 	return choice
 
 
@@ -134,9 +135,9 @@ def main(choice):
 			else:
 				print(f"The number of {name} is {number}.")
 
-		# If the user wants to add a new contact, prompt them for the name and number of the contact and save it to the file.
+		# If the user wants to add a new contact...
 		elif choice == "add":
-			add()
+			add() # prompt them for the name and number of the contact and save it to the file.
 
 		# If the user wants to edit an existing contact, prompt them for the name of the contact and edit their information.
 		elif choice == "edit":
@@ -145,13 +146,13 @@ def main(choice):
 			if contact:
 				edit_contact(contact)
 
-		# If the user wants to quit, break the loop to exit the program.
+		# If the user wants to quit... break the loop to exit the program.
 		elif choice == "quit":
-			break
+			break # break the loop to exit the program.
 
 		# Ask the user to search, add, edit, or quit again.
 		choice = input("Do you want to...\n(search/add/edit/quit): ")
-		choice = choice.lower()
+		choice = choice.lower() # lower the input word for the program to read it
 
 
 if __name__ == '__main__':
